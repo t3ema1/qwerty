@@ -3,16 +3,38 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { SignupComponent } from './signup/signup.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { SigninComponent } from './signin/signin.component';
+import { JwtModule, JwtHelperService } from '@auth0/angular-jwt';
+import { AdminComponent } from './admin/admin.component';
+import { HumanResComponent } from './human-res/human-res.component';
+import { UserComponent } from './user/user.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SignupComponent,
+    SigninComponent,
+    AdminComponent,
+    HumanResComponent,
+    UserComponent,
+    ForbiddenComponent
   ],
-  imports: [
+  imports: [JwtModule.forRoot({
+    config: {
+      tokenGetter: () => {
+        return localStorage.getItem('jwtToken'); // Adjust this to your storage method
+      },
+    },
+  }),
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [JwtHelperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

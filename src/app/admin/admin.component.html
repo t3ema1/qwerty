@@ -1,0 +1,6 @@
+<div *ngFor="let user of usersWithRoles">
+  <p>Username: {{ user.username }}</p>
+  <p>Roles: {{ user.roles?.join(", ") }}</p>
+  <!-- Use the safe navigation operator here -->
+  <hr />
+</div>
