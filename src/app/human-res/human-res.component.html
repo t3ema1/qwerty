@@ -50,9 +50,11 @@
     </div>
 
     <div class="col-md-10">
+      <h2>our employees</h2>
+
       <div *ngFor="let user of usersWithRoles">
         <p>Username: {{ user.username }}</p>
-        <p>Roles: {{ user.roles?.join(", ") }}</p>
+        <p>Role: {{ user.roles?.join(", ") }}</p>
         <hr />
       </div>
     </div>
