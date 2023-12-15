@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-md-10"></div>
+  <div class="col-md-2">
+    <a routerLink="/add-meeting" class="btn btn-primary">Create Meeting</a>
+  </div>
+</div>
+
+<div class="calendar">
+  <div class="controls">
+    <button (click)="prevMonth()">Previous</button>
+    <span>{{ monthYearDisplay }}</span>
+    <button (click)="nextMonth()">Next</button>
+  </div>
+  <div class="days">
+    <div class="row" *ngFor="let week of calendar">
+      <div class="week">
+        <div
+          *ngFor="let day of week"
+          class="day"
+          [ngClass]="{ 'has-meeting': day?.hasMeeting }"
+        >
+          <div class="day-number">{{ day?.day }}</div>
+          <div class="day-name">{{ day?.dayName }}</div>
+          <div class="meeting-text" *ngIf="day?.hasMeeting">Meeting Today</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

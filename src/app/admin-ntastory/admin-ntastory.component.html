@@ -1,0 +1,103 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10"><p>.</p></div>
+    <div class="col-md-2">
+      <button routerLink="/add-ntastory">Add New Ntastory Chapter</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2 border-end border-dark">
+      <div class="my-buttons">
+        <button
+          type="button"
+          class="btn btn-secondary w-100 mb-1 border border-dark border-2"
+        >
+          Dashboard
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-secondary w-100 mb-1 border border-dark border-2"
+          routerLink="/admin-announcement"
+        >
+          Announcements and news
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-secondary w-100 mb-1 border border-dark border-2"
+          routerLink="/admin-ntastory"
+        >
+          NTA Story & Roots
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-secondary w-100 mb-1 border border-dark border-2"
+          routerLink="/meeting-calendar"
+        >
+          NTA Calendar
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-secondary w-100 mb-1 border border-dark border-2"
+        >
+          Discover Your Magic Tools
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-secondary w-100 mb-1 border border-dark border-2"
+          routerLink="/meeting-calendar"
+        >
+          My Meetings
+        </button>
+      </div>
+    </div>
+
+    <div class="col-md-10">
+      <div>
+        <h2>NTA stories</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Label Name</th>
+              <th>Created By</th>
+              <th>Updated By</th>
+              <th>Last Updated Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let historyItem of ntastoryHistoryData">
+              <td>{{ historyItem.storyId }}</td>
+              <td>{{ historyItem.header }}</td>
+              <td>{{ historyItem.createdBy }}</td>
+              <td>{{ historyItem.lastUpdatedBy }}</td>
+              <td>{{ historyItem.lastUpdatedDate }}</td>
+              <td>
+                <button
+                  type="button"
+                  class="btn btn-secondary p-1 border border-dark border-1"
+                  [routerLink]="['/update-ntastory', historyItem.storyId]"
+                >
+                  <i class="bi bi-pencil-square"></i> Update
+                </button>
+
+                <button
+                  type="button"
+                  class="btn btn-secondary p-1 border border-dark border-1"
+                  (click)="onDeleteNTAStory(historyItem.storyId)"
+                >
+                  <i class="bi bi-trash"></i> Delete
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

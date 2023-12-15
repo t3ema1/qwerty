@@ -1,0 +1,33 @@
+<form [formGroup]="announcementForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="labelName">Label Name:</label>
+    <input type="text" id="labelName" formControlName="labelName" />
+  </div>
+
+  <div>
+    <label for="messageBody">Message Body:</label>
+    <textarea id="messageBody" formControlName="messageBody"></textarea>
+  </div>
+
+  <div>
+    <label for="publishedTo">Published To:</label>
+    <select id="publishedTo" formControlName="publishedTo">
+      <option value="1">Admin</option>
+      <option value="2">HR</option>
+      <option value="3">User</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="announcementDate">Announcement Date:</label>
+    <input
+      type="datetime-local"
+      id="announcementDate"
+      formControlName="announcementDate"
+    />
+  </div>
+
+  <button type="submit" [disabled]="!announcementForm.valid">
+    Add Announcement
+  </button>
+</form>

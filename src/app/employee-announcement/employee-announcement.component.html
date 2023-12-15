@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="my-buttons">
+        <button
+          type="button"
+          class="btn btn-secondary w-100 mb-1 border border-dark border-2"
+        >
+          Dashboard
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-secondary w-100 mb-1 border border-dark border-2"
+          routerLink="/employee-announcement"
+        >
+          Announcements and news
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-secondary w-100 mb-1 border border-dark border-2"
+          routerLink="/employee-ntastory"
+        >
+          NTA Story & Roots
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-secondary w-100 mb-1 border border-dark border-2"
+          routerLink="/meeting-calendar"
+        >
+          NTA Calendar
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-secondary w-100 mb-1 border border-dark border-2"
+        >
+          Discover Your Magic Tools
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-secondary w-100 mb-1 border border-dark border-2"
+          routerLink="/meeting-calendar"
+        >
+          My Meetings
+        </button>
+      </div>
+    </div>
+
+    <div class="col-md-10">
+      <div *ngFor="let announcement of EmployeeAnnouncements">
+        <div
+          class="border border-black"
+          *ngIf="shouldDisplay(announcement.announcementDate)"
+        >
+          {{ announcement.title }}
+        </div>
+        <div
+          class="border border-dark"
+          *ngIf="shouldDisplay(announcement.announcementDate)"
+        >
+          {{ announcement.body }}
+          <div class="space"><p>.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

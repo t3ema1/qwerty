@@ -11,7 +11,7 @@ export class AuthService {
   constructor(private jwtHelper: JwtHelperService) { }
 
   isHr(): boolean {
-    const token = localStorage.getItem('jwtToken'); // Retrieve the JWT token from a secure storage location
+    const token = localStorage.getItem('jwtToken');
 
     if (token && !this.jwtHelper.isTokenExpired(token)) {
       const decodedToken = this.jwtHelper.decodeToken(token);
@@ -22,7 +22,6 @@ export class AuthService {
 
       console.log(therole);
 
-      // Check if the user's role claim is "HR"
       return decodedToken && therole === 'HR';
     }
 
@@ -30,7 +29,7 @@ export class AuthService {
   }
 
   isAdmin(): boolean {
-    const token = localStorage.getItem('jwtToken'); // Retrieve the JWT token from a secure storage location
+    const token = localStorage.getItem('jwtToken');
 
     if (token && !this.jwtHelper.isTokenExpired(token)) {
       const decodedToken = this.jwtHelper.decodeToken(token);
@@ -40,7 +39,6 @@ export class AuthService {
       console.log(therole);
 
 
-      // Check if the user's role claim is "HR"
       return decodedToken && therole === 'Admin';
     }
 
@@ -48,18 +46,19 @@ export class AuthService {
   }
 
   isUser(): boolean {
-    const token = localStorage.getItem('jwtToken'); // Retrieve the JWT token from a secure storage location
+    const token = localStorage.getItem('jwtToken');
 
     if (token && !this.jwtHelper.isTokenExpired(token)) {
       const decodedToken = this.jwtHelper.decodeToken(token);
       console.log("isUser()");
+      const therole = decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+
 
       console.log(decodedToken);
-      console.log(decodedToken.role);
+      console.log(therole);
 
 
-      // Check if the user's role claim is "HR"
-      return decodedToken && decodedToken.role === 'User';
+      return decodedToken && therole === 'User';
     }
 
     return false;
@@ -67,3 +66,4 @@ export class AuthService {
 
 
 }
+

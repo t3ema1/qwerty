@@ -1,6 +1,60 @@
-<div *ngFor="let user of usersWithRoles">
-  <p>Username: {{ user.username }}</p>
-  <p>Roles: {{ user.roles?.join(", ") }}</p>
-  <!-- Use the safe navigation operator here -->
-  <hr />
+<div class="container">
+  <div class="row">
+    <div class="col-md-2 border-end border-dark">
+      <div class="my-buttons">
+        <button
+          type="button"
+          class="btn btn-secondary w-100 mb-1 border border-dark border-2"
+        >
+          Dashboard
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-secondary w-100 mb-1 border border-dark border-2"
+          routerLink="/hr-announcement"
+        >
+          Announcements and news
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-secondary w-100 mb-1 border border-dark border-2"
+          routerLink="/hr-ntastory"
+        >
+          NTA Story & Roots
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-secondary w-100 mb-1 border border-dark border-2"
+          routerLink="/meeting-calendar"
+        >
+          NTA Calendar
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-secondary w-100 mb-1 border border-dark border-2"
+        >
+          Discover Your Magic Tools
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-secondary w-100 mb-1 border border-dark border-2"
+        >
+          My Meetings
+        </button>
+      </div>
+    </div>
+
+    <div class="col-md-10">
+      <div *ngFor="let user of usersWithRoles">
+        <p>Username: {{ user.username }}</p>
+        <p>Roles: {{ user.roles?.join(", ") }}</p>
+        <hr />
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,0 +1,13 @@
+<div *ngIf="announcement">
+  <h2>Update Announcement</h2>
+  <label>Label Name</label>
+  <input type="text" [(ngModel)]="announcement.labelName" />
+
+  <label>Message Body</label>
+  <textarea [(ngModel)]="announcement.messageBody"></textarea>
+
+  <label>Announcement Date</label>
+  <input type="date" [(ngModel)]="announcement.announcementDate" />
+
+  <button (click)="onSubmit()">Update Announcement</button>
+</div>

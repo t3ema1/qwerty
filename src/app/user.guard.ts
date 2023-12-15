@@ -6,10 +6,10 @@ export const userGuard: CanActivateFn = (route, state) => {
   const authService = inject(AuthService);
   const router = inject(Router);
 
-  if (authService.isAdmin()) {
+  if (authService.isUser()) {
     return true;
   } else {
-    // Redirect to a different route or show an access denied message
+    console.log("not a user");
     router.navigate(['/forbidden-component']);
     return false;
   }

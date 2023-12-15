@@ -1,0 +1,31 @@
+<form [formGroup]="ntastoryForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="header">Header:</label>
+    <input type="text" id="header" formControlName="header" />
+  </div>
+
+  <div>
+    <label for="body">Body:</label>
+    <textarea id="body" formControlName="body"></textarea>
+  </div>
+
+  <div>
+    <label for="publishedTo">Published To:</label>
+    <select id="publishedTo" formControlName="publishedTo">
+      <option value="1">Admin</option>
+      <option value="2">HR</option>
+      <option value="3">User</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="announcementDate">Announcement Date:</label>
+    <input
+      type="datetime-local"
+      id="announcementDate"
+      formControlName="announcementDate"
+    />
+  </div>
+
+  <button type="submit" [disabled]="!ntastoryForm.valid">Add Ntastory</button>
+</form>

@@ -9,7 +9,6 @@ export const adminGuard: CanActivateFn = (route, state) => {
   if (authService.isAdmin()) {
     return true;
   } else {
-    // Redirect to a different route or show an access denied message
     router.navigate(['/forbidden-component']);
     return false;
   }

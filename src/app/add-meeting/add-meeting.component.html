@@ -1,0 +1,80 @@
+<form (ngSubmit)="addNewMeeting()" class="meeting-form">
+  <label for="meetingName">Meeting Name:</label>
+  <input
+    type="text"
+    id="meetingName"
+    [(ngModel)]="newMeeting.meetingName"
+    name="meetingName"
+    required
+  />
+
+  <label for="meetingType">Meeting Type:</label>
+  <input
+    type="text"
+    id="meetingType"
+    [(ngModel)]="newMeeting.meetingType"
+    name="meetingType"
+    required
+  />
+
+  <label for="description">Description:</label>
+  <textarea
+    id="description"
+    [(ngModel)]="newMeeting.description"
+    name="description"
+    required
+  ></textarea>
+
+  <label for="meetingLocation">Meeting Location:</label>
+  <input
+    type="text"
+    id="meetingLocation"
+    [(ngModel)]="newMeeting.meetingLocation"
+    name="meetingLocation"
+    required
+  />
+
+  <label for="meetingLink">Meeting Link:</label>
+  <input
+    type="text"
+    id="meetingLink"
+    [(ngModel)]="newMeeting.meetingLink"
+    name="meetingLink"
+    required
+  />
+
+  <label for="attendeeUsernames">Attendee Usernames (comma-separated):</label>
+  <input
+    type="text"
+    id="attendeeUsernames"
+    #attendeeInput="ngModel"
+    (change)="handleAttendeeChange($event)"
+    [ngModel]="
+      (newMeeting.attendeeUsernames &&
+        newMeeting.attendeeUsernames.join(',')) ||
+      ''
+    "
+    name="attendeeUsernames"
+    required
+  />
+
+  <label for="announcementDate">Announcement Date:</label>
+  <input
+    type="date"
+    id="announcementDate"
+    [(ngModel)]="newMeeting.announcementDate"
+    name="announcementDate"
+    required
+  />
+
+  <label for="meetingDate">Meeting Date:</label>
+  <input
+    type="date"
+    id="meetingDate"
+    [(ngModel)]="newMeeting.meetingDate"
+    name="meetingDate"
+    required
+  />
+
+  <button type="submit">Create Meeting</button>
+</form>

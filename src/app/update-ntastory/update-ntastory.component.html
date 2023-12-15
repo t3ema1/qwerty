@@ -1,0 +1,13 @@
+<div *ngIf="ntaStory">
+  <h2>Update NTA Story</h2>
+  <label>Header</label>
+  <input type="text" [(ngModel)]="ntaStory.Header" />
+
+  <label>Body</label>
+  <textarea [(ngModel)]="ntaStory.Body"></textarea>
+
+  <label>Announcement Date</label>
+  <input type="date" [(ngModel)]="ntaStory.announcementDate" />
+
+  <button (click)="onSubmit()">Update NTA Story</button>
+</div>

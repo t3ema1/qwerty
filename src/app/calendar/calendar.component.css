@@ -1,0 +1,20 @@
+.week {
+    display: flex;
+  }
+  
+  .day {
+    flex: 1;
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 5px;
+  }
+
+  .days .week .day.has-meeting {
+    background-color: rgb(255, 0, 119) !important; 
+    color: rgb(0, 0, 0);
+  }
+  .meeting-text {
+    font-weight: bold;
+    color: rgb(46, 62, 138); 
+   
+  }
