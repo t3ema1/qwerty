@@ -26,7 +26,8 @@ export class AddNtastoryComponent {
       header: ['', Validators.required],
       body: ['', Validators.required],
       publishedTo: ['', Validators.required],
-      announcementDate: ['', Validators.required]
+      announcementDate: ['', Validators.required],
+      createdby: ['']
     });
   }
 
@@ -43,6 +44,8 @@ export class AddNtastoryComponent {
         const username = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'];
         console.log(ntastory);
         console.log(username);
+        ntastory.createdby = username;
+
         this.ntastoryService.addNtastory(ntastory, headers).subscribe(
           () => {
             this.ntastoryForm.reset();

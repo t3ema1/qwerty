@@ -3,4 +3,5 @@ export interface Announcement {
     messageBody: string;
     publishedTo: number;
     announcementDate: Date;
+    createdby: string;
 }

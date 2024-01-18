@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AnnouncementService } from '../announcement.service';
+declare var $: any;
 
 @Component({
   selector: 'app-employee-announcement',
@@ -7,7 +8,8 @@ import { AnnouncementService } from '../announcement.service';
   styleUrls: ['./employee-announcement.component.css']
 })
 export class EmployeeAnnouncementComponent implements OnInit {
-  EmployeeAnnouncements: { title: string, body: string, announcementDate: Date }[] = [];
+  EmployeeAnnouncements: { title: string, body: string, announcementDate: Date, createdby: string }[] = [];
+  sidebarVisible: boolean = false;
 
   constructor(private announcementService: AnnouncementService) { }
 
@@ -18,10 +20,12 @@ export class EmployeeAnnouncementComponent implements OnInit {
   fetchHRAnnouncements(): void {
     this.announcementService.getEmployeeAnnouncements().subscribe(
       (data: any[]) => {
+        console.log(data);
         this.EmployeeAnnouncements = data.map(item => ({
           title: item.labelName,
           body: item.messageBody,
-          announcementDate: new Date(item.announcementDate)
+          announcementDate: new Date(item.announcementDate),
+          createdby: item.createdby
         }));
       },
       (error) => {
@@ -33,4 +37,31 @@ export class EmployeeAnnouncementComponent implements OnInit {
     const currentDate = new Date();
     return announcementDate <= currentDate;
   }
+
+  handleClick(event: Event): void {
+    const clickedElement = event.target as HTMLElement;
+    const sidebarButton = document.getElementById('sidebarToggleBtn');
+
+    if (
+      !clickedElement.closest('.col-md-2') &&
+      this.sidebarVisible &&
+      !(clickedElement === sidebarButton)
+    ) {
+      this.sidebarVisible = false;
+      $('#sidebar').hide('slide');
+    }
+  }
+
+
+
+  toggleSidebar(): void {
+    this.sidebarVisible = !this.sidebarVisible;
+    if (this.sidebarVisible) {
+      $('#sidebar').show('slide');
+    } else {
+      $('#sidebar').hide('slide');
+    }
+  }
+
+
 }

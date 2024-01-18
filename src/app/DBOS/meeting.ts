@@ -1,4 +1,5 @@
 export interface Meeting {
+    createdBy: string;
     meetingName: string;
     meetingType: string;
     description: string;

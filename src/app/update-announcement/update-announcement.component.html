@@ -1,13 +1,27 @@
 <div *ngIf="announcement">
   <h2>Update Announcement</h2>
-  <label>Label Name</label>
-  <input type="text" [(ngModel)]="announcement.labelName" />
+  <div class="form-group">
+    <label>Label Name</label>
+    <input type="text" [(ngModel)]="announcement.labelName" />
 
-  <label>Message Body</label>
-  <textarea [(ngModel)]="announcement.messageBody"></textarea>
+    <label>Message Body</label>
+    <textarea [(ngModel)]="announcement.messageBody"></textarea>
 
-  <label>Announcement Date</label>
-  <input type="date" [(ngModel)]="announcement.announcementDate" />
+    <label>Announcement Date</label>
+    <input type="date" [(ngModel)]="announcement.announcementDate" />
+  </div>
 
-  <button (click)="onSubmit()">Update Announcement</button>
+  <button
+    (click)="onSubmit()"
+    style="
+      border-radius: 10px;
+      background-color: rgb(7, 7, 164);
+      padding: 10px;
+      color: rgb(231, 231, 229);
+      margin-left: 40px;
+      margin-top: 30px;
+    "
+  >
+    Update Announcement
+  </button>
 </div>

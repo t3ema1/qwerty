@@ -22,11 +22,13 @@ import { AddNtastoryComponent } from './add-ntastory/add-ntastory.component';
 import { UpdateNtastoryComponent } from './update-ntastory/update-ntastory.component';
 import { UpdateAnnouncementComponent } from './update-announcement/update-announcement.component';
 import { AddMeetingComponent } from './add-meeting/add-meeting.component';
+import { UpdateMeetingComponent } from './update-meeting/update-meeting.component';
 
 const routes: Routes = [{ path: '', component: SignupComponent },
 { path: 'add-announcement', component: AddAnnouncementComponent, canActivate: [adminGuard] },
 { path: 'add-ntastory', component: AddNtastoryComponent, canActivate: [adminGuard] },
 { path: 'add-meeting', component: AddMeetingComponent },
+{ path: 'update-meeting/:id', component: UpdateMeetingComponent },
 { path: 'update-ntastory/:id', component: UpdateNtastoryComponent, canActivate: [adminGuard] },
 { path: 'update-announcement/:id', component: UpdateAnnouncementComponent, canActivate: [adminGuard] },
 { path: 'admin-announcement', component: AdminAnnouncementComponent, canActivate: [adminGuard] },

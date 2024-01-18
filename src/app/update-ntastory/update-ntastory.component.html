@@ -1,13 +1,27 @@
 <div *ngIf="ntaStory">
   <h2>Update NTA Story</h2>
-  <label>Header</label>
-  <input type="text" [(ngModel)]="ntaStory.Header" />
+  <div class="form-group">
+    <label>Header</label>
+    <input type="text" [(ngModel)]="ntaStory.Header" />
 
-  <label>Body</label>
-  <textarea [(ngModel)]="ntaStory.Body"></textarea>
+    <label>Body</label>
+    <textarea [(ngModel)]="ntaStory.body"></textarea>
 
-  <label>Announcement Date</label>
-  <input type="date" [(ngModel)]="ntaStory.announcementDate" />
+    <label>Announcement Date</label>
+    <input type="date" [(ngModel)]="ntaStory.announcementDate" />
+  </div>
 
-  <button (click)="onSubmit()">Update NTA Story</button>
+  <button
+    (click)="onSubmit()"
+    style="
+      border-radius: 10px;
+      background-color: rgb(7, 7, 164);
+      padding: 10px;
+      color: rgb(231, 231, 229);
+      margin-left: 40px;
+      margin-top: 30px;
+    "
+  >
+    Update NTA Story
+  </button>
 </div>

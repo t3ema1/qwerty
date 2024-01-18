@@ -1,7 +1,18 @@
 <div class="row">
   <div class="col-md-10"></div>
   <div class="col-md-2">
-    <a routerLink="/add-meeting" class="btn btn-primary">Create Meeting</a>
+    <a
+      routerLink="/add-meeting"
+      class="btn btn-primary"
+      style="
+        margin-top: 20px;
+        padding: 15px;
+        background-color: rgb(12, 6, 81);
+        font-weight: 500;
+        border-radius: 20px;
+      "
+      >Create Meeting</a
+    >
   </div>
 </div>
 
@@ -21,7 +32,25 @@
         >
           <div class="day-number">{{ day?.day }}</div>
           <div class="day-name">{{ day?.dayName }}</div>
-          <div class="meeting-text" *ngIf="day?.hasMeeting">Meeting Today</div>
+          <ng-container *ngIf="day?.hasMeeting">
+            <div
+              *ngIf="checkIfCreatedBy(day?.date, currentUsername)"
+              class="meeting-text"
+            >
+              <button
+                (click)="handleMeetingDetails(day?.date)"
+                style="border-radius: 20px; font-weight: bold"
+              >
+                Meeting Today (edit)
+              </button>
+            </div>
+            <div
+              *ngIf="!checkIfCreatedBy(day?.date, currentUsername)"
+              class="meeting-text"
+            >
+              Meeting Today
+            </div>
+          </ng-container>
         </div>
       </div>
     </div>

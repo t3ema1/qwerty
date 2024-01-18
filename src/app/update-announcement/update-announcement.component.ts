@@ -40,7 +40,8 @@ export class UpdateAnnouncementComponent implements OnInit {
       LabelName: ['', Validators.required],
       MessageBody: ['', Validators.required],
       PublishedTo: ['', Validators.required],
-      AnnouncementDate: ['', Validators.required]
+      AnnouncementDate: ['', Validators.required],
+      Createdby: ['', Validators.required]
     });
     console.log("init-form");
   }
@@ -66,7 +67,8 @@ export class UpdateAnnouncementComponent implements OnInit {
         LabelName: this.announcement.labelName,
         MessageBody: this.announcement.messageBody,
         PublishedTo: this.announcement.publishedTo,
-        AnnouncementDate: this.announcement.announcementDate
+        AnnouncementDate: this.announcement.announcementDate,
+        Createdby: this.announcement.createdby
       });
       console.log("form-completed");
       console.log(this.announcementForm.value);

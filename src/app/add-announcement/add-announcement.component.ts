@@ -25,7 +25,8 @@ export class AddAnnouncementComponent {
       labelName: ['', Validators.required],
       messageBody: ['', Validators.required],
       publishedTo: ['', Validators.required],
-      announcementDate: ['', Validators.required]
+      announcementDate: ['', Validators.required],
+      createdby: ['']
     });
   }
 
@@ -43,6 +44,7 @@ export class AddAnnouncementComponent {
         const username = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'];
         console.log(announcement);
         console.log(username);
+        announcement.createdby = username;
         this.announcementService.addAnnouncement(announcement, headers).subscribe(
           () => {
             this.announcementForm.reset();

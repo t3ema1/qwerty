@@ -28,6 +28,7 @@ import { AddNtastoryComponent } from './add-ntastory/add-ntastory.component';
 import { UpdateNtastoryComponent } from './update-ntastory/update-ntastory.component';
 import { UpdateAnnouncementComponent } from './update-announcement/update-announcement.component';
 import { AddMeetingComponent } from './add-meeting/add-meeting.component';
+import { UpdateMeetingComponent } from './update-meeting/update-meeting.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +49,8 @@ import { AddMeetingComponent } from './add-meeting/add-meeting.component';
     AddNtastoryComponent,
     UpdateNtastoryComponent,
     UpdateAnnouncementComponent,
-    AddMeetingComponent
+    AddMeetingComponent,
+    UpdateMeetingComponent
   ],
   imports: [JwtModule.forRoot({
     config: {

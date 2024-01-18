@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AnnouncementService } from '../announcement.service';
+import { Announcement } from '../DBOS/announcement';
+declare var $: any;
 
 @Component({
   selector: 'app-admin-announcement',
@@ -8,11 +10,15 @@ import { AnnouncementService } from '../announcement.service';
 })
 export class AdminAnnouncementComponent implements OnInit {
   announcementHistory: any[] = [];
+  sidebarVisible: boolean = false;
+  hoveredAnnouncementMessage: string = '';
+
 
   constructor(private announcementService: AnnouncementService) { }
 
   ngOnInit(): void {
     this.fetchAnnouncementHistory();
+
   }
 
   fetchAnnouncementHistory(): void {
@@ -41,5 +47,47 @@ export class AdminAnnouncementComponent implements OnInit {
   }
 
 
+  onDisplayAnnouncement(announcementId: number): void {
+    this.announcementService.getAnnouncementById(announcementId).subscribe(
+      (announcement: Announcement) => {
+        this.hoveredAnnouncementMessage = announcement.messageBody;
+        console.log('Message Body:', this.hoveredAnnouncementMessage);
+
+      },
+      (error) => {
+        console.error('Error fetching announcement:', error);
+      }
+    );
+  }
+
+
+  hideMessage(): void {
+    this.hoveredAnnouncementMessage = '';
+  }
+
+  handleClick(event: Event): void {
+    const clickedElement = event.target as HTMLElement;
+    const sidebarButton = document.getElementById('sidebarToggleBtn');
+
+    if (
+      !clickedElement.closest('.col-md-2') &&
+      this.sidebarVisible &&
+      !(clickedElement === sidebarButton)
+    ) {
+      this.sidebarVisible = false;
+      $('#sidebar').hide('slide');
+    }
+  }
+
+
+
+  toggleSidebar(): void {
+    this.sidebarVisible = !this.sidebarVisible;
+    if (this.sidebarVisible) {
+      $('#sidebar').show('slide');
+    } else {
+      $('#sidebar').hide('slide');
+    }
+  }
 
 }

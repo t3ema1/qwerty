@@ -1,0 +1,88 @@
+<div class="update-meeting">
+  <h2>Update Meeting</h2>
+  <div class="form-group">
+    <form [formGroup]="meetingForm" (ngSubmit)="onSubmit()">
+      <label for="meetingName">Meeting Name:</label>
+      <input
+        type="text"
+        id="meetingName"
+        name="meetingName"
+        formControlName="MeetingName"
+      />
+
+      <label for="meetingType">Meeting Type:</label>
+      <input
+        type="text"
+        id="meetingType"
+        name="meetingType"
+        formControlName="MeetingType"
+      />
+
+      <label for="attendeeUsernames"
+        >Attendee Usernames (comma-separated):</label
+      >
+      <input
+        type="text"
+        id="attendeeUsernames"
+        name="attendeeUsernames"
+        formControlName="AttendeeUsernames"
+        (change)="handleAttendeeChange($event)"
+      />
+
+      <!-- New fields -->
+      <label for="description">Description:</label>
+      <input
+        type="text"
+        id="description"
+        name="description"
+        formControlName="Description"
+      />
+
+      <label for="meetingLocation">Meeting Location:</label>
+      <input
+        type="text"
+        id="meetingLocation"
+        name="meetingLocation"
+        formControlName="MeetingLocation"
+      />
+
+      <label for="meetingLink">Meeting Link:</label>
+      <input
+        type="text"
+        id="meetingLink"
+        name="meetingLink"
+        formControlName="MeetingLink"
+      />
+
+      <label for="announcementDate">Announcement Date:</label>
+      <input
+        type="date"
+        id="announcementDate"
+        name="announcementDate"
+        formControlName="AnnouncementDate"
+      />
+
+      <label for="meetingDate">Meeting Date:</label>
+      <input
+        type="date"
+        id="meetingDate"
+        name="meetingDate"
+        formControlName="MeetingDate"
+      />
+
+      <button
+        type="submit"
+        style="
+          margin-top: 20px;
+          padding: 15px;
+          background-color: rgb(12, 6, 81);
+          font-weight: 500;
+          border-radius: 20px;
+          color: aliceblue;
+        "
+      >
+        Update Meeting
+      </button>
+    </form>
+  </div>
+</div>

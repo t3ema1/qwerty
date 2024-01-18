@@ -1,8 +1,27 @@
-<div class="container">
+<div
+  class="container-fluid full-height"
+  (click)="handleClick($event)"
+  style="background-color: rgb(255, 255, 255)"
+>
   <div class="row">
-    <div class="col-md-2">
-      <div class="my-buttons">
+    <div class="col-md-2" *ngIf="!sidebarVisible">
+      <button
+        type="button"
+        class="btn btn-secondary btn-sm position-fixed top-0 start-0"
+        id="sidebarToggleBtn"
+        style="margin-top: 200px; padding-top: 20px; padding-bottom: 180px"
+        (click)="toggleSidebar()"
+      ></button>
+    </div>
+
+    <div
+      class="sidebar col-md-2 full-height"
+      style="background-color: aliceblue; display: none"
+      id="sidebar"
+    >
+      <div class="my-buttons" style="margin-top: 200px">
         <button
+          style="padding: 20px 10px 20px 10px"
           type="button"
           class="btn btn-secondary w-100 mb-1 border border-dark border-2"
         >
@@ -10,6 +29,7 @@
         </button>
 
         <button
+          style="padding: 20px 10px 20px 10px"
           type="button"
           class="btn btn-secondary w-100 mb-1 border border-dark border-2"
           routerLink="/hr-announcement"
@@ -18,6 +38,7 @@
         </button>
 
         <button
+          style="padding: 20px 10px 20px 10px"
           type="button"
           class="btn btn-secondary w-100 mb-1 border border-dark border-2"
           routerLink="/hr-ntastory"
@@ -26,6 +47,7 @@
         </button>
 
         <button
+          style="padding: 20px 10px 20px 10px"
           type="button"
           class="btn btn-secondary w-100 mb-1 border border-dark border-2"
           routerLink="/meeting-calendar"
@@ -34,6 +56,7 @@
         </button>
 
         <button
+          style="padding: 20px 10px 20px 10px"
           type="button"
           class="btn btn-secondary w-100 mb-1 border border-dark border-2"
         >
@@ -41,27 +64,34 @@
         </button>
 
         <button
+          style="padding: 20px 10px 20px 10px"
           type="button"
           class="btn btn-secondary w-100 mb-1 border border-dark border-2"
+          routerLink="/meeting-calendar"
         >
           My Meetings
         </button>
       </div>
     </div>
 
-    <div class="col-md-10">
+    <div
+      class="col-md-10"
+      style="border-radius: 10px; padding: 10px; margin-top: 50px"
+    >
       <div *ngFor="let ntastory of hrNtaStories">
         <div
-          class="border border-black"
+          style="border-radius: 10px"
           *ngIf="shouldDisplay(ntastory.announcementDate)"
         >
-          {{ ntastory.title }}
+          <h2>Title : {{ ntastory.title }}</h2>
+          <p>Created by : {{ ntastory.createdby }}</p>
         </div>
         <div
           class="border border-dark"
+          style="border-radius: 10px; padding: 20px; margin-bottom: 60px"
           *ngIf="shouldDisplay(ntastory.announcementDate)"
         >
-          {{ ntastory.body }}
+          <h4>Story : {{ ntastory.body }}</h4>
           <div class="space"><p>.</p></div>
         </div>
       </div>

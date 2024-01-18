@@ -1,6 +1,6 @@
-export interface Ntastory {
+export interface Ntastoryy {
     Header: string;
-    body: string;
+    Body: string;
     publishedTo: number;
     announcementDate: Date;
     createdby: string;

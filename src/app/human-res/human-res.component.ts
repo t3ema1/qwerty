@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
-
+import { JwtHelperService } from '@auth0/angular-jwt';
+declare var $: any;
 @Component({
   selector: 'app-human-res',
   templateUrl: './human-res.component.html',
@@ -8,9 +9,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http'
 })
 export class HumanResComponent {
 
-  usersWithRoles: any[] = [];
-
-  constructor(private http: HttpClient) { }
+  loggedInUsername: string = '';
+  sidebarVisible: boolean = false;
+  constructor(private http: HttpClient, private jwtHelper: JwtHelperService) { }
 
   ngOnInit(): void {
     const token = localStorage.getItem('jwtToken');
@@ -20,12 +21,44 @@ export class HumanResComponent {
         Authorization: `Bearer ${token}`,
       });
 
-      this.http.get('https://localhost:7044/api/Authentication/users', { headers }).subscribe((data: any) => {
-        this.usersWithRoles = data;
-        console.log(this.usersWithRoles);
+      const decodedToken = this.jwtHelper.decodeToken(token);
+      const username = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'];
 
-      });
+      this.loggedInUsername = username;
+
     }
 
+
+
+
+
+
+
+
   }
+  handleClick(event: Event): void {
+    const clickedElement = event.target as HTMLElement;
+    const sidebarButton = document.getElementById('sidebarToggleBtn');
+
+    if (
+      !clickedElement.closest('.col-md-2') &&
+      this.sidebarVisible &&
+      !(clickedElement === sidebarButton)
+    ) {
+      this.sidebarVisible = false;
+      $('#sidebar').hide('slide');
+    }
+  }
+
+
+
+  toggleSidebar(): void {
+    this.sidebarVisible = !this.sidebarVisible;
+    if (this.sidebarVisible) {
+      $('#sidebar').show('slide');
+    } else {
+      $('#sidebar').hide('slide');
+    }
+  }
+
 }

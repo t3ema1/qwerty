@@ -7,3 +7,14 @@
     .border.border-dark {
         margin-bottom: 50px; /* Adjust the margin value as needed */
       }
+
+      .my-buttons{
+        position: fixed;
+        top: 0%;
+        left: 0%;
+        width: 15%;
+        margin-top: 200px;
+        
+        
+        }
+        

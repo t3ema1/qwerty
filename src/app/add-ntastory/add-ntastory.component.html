@@ -1,15 +1,24 @@
 <form [formGroup]="ntastoryForm" (ngSubmit)="onSubmit()">
-  <div>
+  <div class="form-group">
     <label for="header">Header:</label>
-    <input type="text" id="header" formControlName="header" />
+    <input
+      type="text"
+      id="header"
+      formControlName="header"
+      placeholder="Enter header text"
+    />
   </div>
 
-  <div>
+  <div class="form-group">
     <label for="body">Body:</label>
-    <textarea id="body" formControlName="body"></textarea>
+    <textarea
+      id="body"
+      formControlName="body"
+      placeholder="Enter body text"
+    ></textarea>
   </div>
 
-  <div>
+  <div class="form-group">
     <label for="publishedTo">Published To:</label>
     <select id="publishedTo" formControlName="publishedTo">
       <option value="1">Admin</option>
@@ -18,7 +27,7 @@
     </select>
   </div>
 
-  <div>
+  <div class="form-group">
     <label for="announcementDate">Announcement Date:</label>
     <input
       type="datetime-local"
@@ -27,5 +36,18 @@
     />
   </div>
 
-  <button type="submit" [disabled]="!ntastoryForm.valid">Add Ntastory</button>
+  <button
+    type="submit"
+    [disabled]="!ntastoryForm.valid"
+    style="
+      border-radius: 10px;
+      background-color: rgb(7, 7, 164);
+      padding: 10px;
+      color: rgb(231, 231, 229);
+      margin-left: 40px;
+      margin-top: 30px;
+    "
+  >
+    Add Ntastory
+  </button>
 </form>

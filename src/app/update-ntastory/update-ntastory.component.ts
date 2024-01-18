@@ -38,7 +38,8 @@ export class UpdateNtastoryComponent implements OnInit {
       Header: ['', Validators.required],
       Body: ['', Validators.required],
       publishedTo: ['', Validators.required],
-      announcementDate: ['', Validators.required]
+      announcementDate: ['', Validators.required],
+      Createdby: ['', Validators.required]
     });
     console.log("init-form");
 
@@ -63,13 +64,16 @@ export class UpdateNtastoryComponent implements OnInit {
     if (this.ntaStory) {
       this.ntaStoryForm.patchValue({
         Header: this.ntaStory.Header,
-        Body: this.ntaStory.Body,
+        Body: this.ntaStory.body,
         publishedTo: this.ntaStory.publishedTo,
-        announcementDate: this.ntaStory.announcementDate
+        announcementDate: this.ntaStory.announcementDate,
+        Createdby: this.ntaStory.createdby
       });
     }
     console.log("form-completed");
     console.log(this.ntaStoryForm.value);
+    console.log(this.ntaStoryForm.value.publishedTo);
+
     console.log("form-completed");
 
   }
@@ -78,7 +82,7 @@ export class UpdateNtastoryComponent implements OnInit {
     this.populateForm();
     console.log(this.ntaStoryForm);
     console.log(this.ntaStoryId);
-    console.log(this.ntaStory?.Body);
+    console.log(this.ntaStory?.body);
     console.log(this.ntaStory?.Header);
 
     if (this.ntaStoryForm.valid && this.ntaStoryId !== null) {
@@ -101,7 +105,7 @@ export class UpdateNtastoryComponent implements OnInit {
       console.log("request-made");
     } else {
       console.log("request-not-made");
-      console.log(this.ntaStory?.Body);
+      console.log(this.ntaStory?.body);
       console.log(this.ntaStory?.Header);
 
     }

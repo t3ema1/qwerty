@@ -64,11 +64,20 @@ export class AnnouncementService {
     return this.http.put<any>(updateUrl, updatedAnnouncement, { headers });
   }
 
-  addMeeting(meeting: Meeting): Observable<any> {
-    console.log(meeting.attendeeUsernames)
+  addMeeting(meeting: Meeting, headers: any): Observable<any> {
     const url = `${this.baseUrl}/addmeeting`;
-
-    return this.http.post<any>(url, meeting);
+    return this.http.post<any>(url, meeting, { headers });
   }
+  updateMeeting(meetingId: number, updatedMeeting: Meeting, headers: HttpHeaders): Observable<any> {
+    const url = `${this.baseUrl}/updatemeeting/${meetingId}`;
+    console.log(updatedMeeting)
+    return this.http.put<any>(url, updatedMeeting, { headers });
+  }
+
+  getMeetingById(meetingId: number): Observable<Meeting> {
+    const url = `${this.baseUrl}/meetingbyId/${meetingId}`;
+    return this.http.get<Meeting>(url);
+  }
+
 
 }
